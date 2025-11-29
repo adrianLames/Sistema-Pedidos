@@ -1,0 +1,130 @@
+.notifications-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  max-width: 400px;
+  width: 100%;
+}
+
+.notification {
+  display: flex;
+  align-items: flex-start;
+  background: var(--surface-color);
+  border-radius: var(--radius);
+  padding: 16px;
+  margin-bottom: 12px;
+  box-shadow: var(--shadow-lg);
+  border-left: 4px solid;
+  animation: slideInRight 0.3s ease-out;
+  transition: var(--transition);
+}
+
+.notification:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg), 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.notification-success {
+  border-left-color: var(--success-color);
+}
+
+.notification-error {
+  border-left-color: var(--error-color);
+}
+
+.notification-warning {
+  border-left-color: var(--warning-color);
+}
+
+.notification-info {
+  border-left-color: var(--color3);
+}
+
+.notification-icon {
+  font-size: 1.25rem;
+  margin-right: 12px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.notification-success .notification-icon {
+  color: var(--success-color);
+}
+
+.notification-error .notification-icon {
+  color: var(--error-color);
+}
+
+.notification-warning .notification-icon {
+  color: var(--warning-color);
+}
+
+.notification-info .notification-icon {
+  color: var(--color3);
+}
+
+.notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.notification-title {
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  font-size: 0.875rem;
+}
+
+.notification-message {
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.notification-close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 12px;
+  flex-shrink: 0;
+  border-radius: 4px;
+  transition: var(--transition);
+}
+
+.notification-close:hover {
+  background-color: var(--border-color);
+  color: var(--text-primary);
+}
+
+.notification-close:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 1px;
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .notifications-container {
+    left: 20px;
+    right: 20px;
+    max-width: none;
+  }
+}

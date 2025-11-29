@@ -1,0 +1,503 @@
+/* ================================================
+   ESTILOS DE ACCESIBILIDAD WCAG 2.1 AA/AAA
+   ================================================ */
+
+/* === 1. SKIP LINKS === */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 10000;
+  font-weight: 600;
+  border-radius: 0 0 4px 0;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #ffd700;
+  outline-offset: 2px;
+}
+
+/* === 2. FOCUS VISIBLE === */
+*:focus-visible {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid #0066cc;
+  outline-offset: 2px;
+}
+
+/* === 3. ALTO CONTRASTE === */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-color: #0000ff;
+    --text-color: #000000;
+    --background-color: #ffffff;
+    --border-color: #000000;
+  }
+
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+
+  button,
+  .btn {
+    border: 2px solid var(--border-color);
+  }
+}
+
+/* === 4. MODO OSCURO === */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #1a1a1a;
+    --surface: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --border: #404040;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--text-primary);
+  }
+
+  .card,
+  .panel,
+  .modal {
+    background-color: var(--surface);
+    color: var(--text-primary);
+  }
+
+  input,
+  select,
+  textarea {
+    background-color: var(--surface);
+    color: var(--text-primary);
+    border-color: var(--border);
+  }
+}
+
+/* === 5. REDUCCIÓN DE MOVIMIENTO === */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* === 6. TEXTO ESCALABLE === */
+html {
+  font-size: 16px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+/* Permitir zoom hasta 200% sin pérdida de funcionalidad */
+@media (min-resolution: 2dppx) {
+  body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+}
+
+/* === 7. ÁREA DE TOUCH MÍNIMA (44x44px) === */
+button,
+a.btn,
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+.clickable {
+  min-height: 44px;
+  min-width: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Para botones pequeños, aumentar el área de clic */
+.btn-icon {
+  padding: 12px;
+  min-width: 44px;
+  min-height: 44px;
+}
+
+/* === 8. CONTRASTE DE COLOR === */
+/* Asegurar contraste mínimo 4.5:1 para texto normal */
+.text-on-light {
+  color: #1a1a1a; /* Contraste 15.3:1 sobre blanco */
+}
+
+.text-on-dark {
+  color: #ffffff; /* Contraste 21:1 sobre negro */
+}
+
+.text-secondary {
+  color: #595959; /* Contraste 7:1 sobre blanco */
+}
+
+/* === 9. ESTADOS INTERACTIVOS === */
+button:hover,
+a:hover,
+.btn:hover {
+  opacity: 0.9;
+  cursor: pointer;
+}
+
+button:active,
+a:active,
+.btn:active {
+  transform: scale(0.98);
+}
+
+button:disabled,
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* === 10. INDICADORES DE CARGA === */
+.loading-indicator {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-top-color: #0066cc;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Texto alternativo para lectores de pantalla */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.sr-only-focusable:active,
+.sr-only-focusable:focus {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip: auto;
+  white-space: normal;
+}
+
+/* === 11. ERRORES Y VALIDACIÓN === */
+.error-message {
+  color: #d32f2f;
+  background-color: #ffebee;
+  border-left: 4px solid #d32f2f;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.error-message::before {
+  content: "⚠️ ";
+  margin-right: 8px;
+}
+
+.success-message {
+  color: #1b5e20;
+  background-color: #e8f5e9;
+  border-left: 4px solid #4caf50;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.success-message::before {
+  content: "✓ ";
+  margin-right: 8px;
+}
+
+.warning-message {
+  color: #e65100;
+  background-color: #fff3e0;
+  border-left: 4px solid #ff9800;
+  padding: 12px 16px;
+  margin: 8px 0;
+  border-radius: 4px;
+  font-weight: 500;
+}
+
+.warning-message::before {
+  content: "⚡ ";
+  margin-right: 8px;
+}
+
+/* === 12. FORMULARIOS ACCESIBLES === */
+label {
+  display: block;
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #1a1a1a;
+}
+
+input[aria-invalid="true"],
+select[aria-invalid="true"],
+textarea[aria-invalid="true"] {
+  border-color: #d32f2f;
+  border-width: 2px;
+  background-color: #ffebee;
+}
+
+input[aria-invalid="true"]:focus,
+select[aria-invalid="true"]:focus,
+textarea[aria-invalid="true"]:focus {
+  outline-color: #d32f2f;
+}
+
+/* === 13. TABLAS ACCESIBLES === */
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  text-align: left;
+  font-weight: 600;
+  background-color: #f5f5f5;
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+td {
+  padding: 12px;
+  border: 1px solid #e0e0e0;
+}
+
+caption {
+  font-weight: 600;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+/* === 14. NAVEGACIÓN LANDMARKS === */
+[role="navigation"],
+[role="main"],
+[role="complementary"],
+[role="contentinfo"] {
+  outline: none;
+}
+
+/* === 15. MODALES ACCESIBLES === */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.modal {
+  background: white;
+  border-radius: 8px;
+  max-width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+}
+
+.modal:focus {
+  outline: none;
+}
+
+/* === 16. TOOLTIPS ACCESIBLES === */
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip-content {
+  visibility: hidden;
+  background-color: #1a1a1a;
+  color: #fff;
+  text-align: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  bottom: 125%;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  transition: opacity 0.3s;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.tooltip:hover .tooltip-content,
+.tooltip:focus .tooltip-content {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* === 17. ENLACES ACCESIBLES === */
+a {
+  color: #0066cc;
+  text-decoration: underline;
+}
+
+a:hover {
+  color: #0052a3;
+  text-decoration: none;
+}
+
+a:visited {
+  color: #551a8b;
+}
+
+/* Indicador visual de enlace externo */
+a[target="_blank"]::after {
+  content: " ↗";
+  font-size: 0.8em;
+}
+
+/* === 18. BREADCRUMBS ACCESIBLES === */
+.breadcrumb {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.breadcrumb-item {
+  display: inline-flex;
+  align-items: center;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "›";
+  padding: 0 8px;
+  color: #666;
+}
+
+.breadcrumb-item[aria-current="page"] {
+  color: #1a1a1a;
+  font-weight: 600;
+}
+
+/* === 19. ALERTAS LIVE REGIONS === */
+[role="alert"],
+[role="status"],
+[aria-live="polite"],
+[aria-live="assertive"] {
+  padding: 12px 16px;
+  border-radius: 4px;
+  margin: 8px 0;
+}
+
+/* === 20. PROGRESO ACCESIBLE === */
+progress {
+  width: 100%;
+  height: 24px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+progress::-webkit-progress-bar {
+  background-color: #e0e0e0;
+  border-radius: 4px;
+}
+
+progress::-webkit-progress-value {
+  background-color: #0066cc;
+  border-radius: 4px;
+}
+
+progress::-moz-progress-bar {
+  background-color: #0066cc;
+  border-radius: 4px;
+}
+
+/* === 21. SWITCHES Y CHECKBOXES === */
+input[type="checkbox"],
+input[type="radio"] {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+/* === 22. RESPONSIVE ACCESIBLE === */
+@media (max-width: 768px) {
+  /* Aumentar áreas táctiles en móviles */
+  button,
+  a.btn,
+  .clickable {
+    min-height: 48px;
+    min-width: 48px;
+  }
+
+  /* Texto más grande en móviles */
+  body {
+    font-size: 16px;
+    line-height: 1.5;
+  }
+}
+
+/* === 23. PRINT ACCESIBLE === */
+@media print {
+  .no-print,
+  button,
+  .btn,
+  nav,
+  header,
+  footer {
+    display: none !important;
+  }
+
+  body {
+    color: #000;
+    background: #fff;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #000;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+}
