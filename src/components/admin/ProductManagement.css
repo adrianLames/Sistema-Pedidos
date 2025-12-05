@@ -188,8 +188,8 @@
 
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 24px;
 }
 
 .product-card {
@@ -340,28 +340,45 @@
 /* Acciones del producto */
 .product-actions {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.product-actions > .btn {
+  width: 100%;
 }
 
 .stock-controls {
-  display: flex;
-  gap: 4px;
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  gap: 8px;
+  align-items: center;
+}
+
+.stock-controls .btn-outline:last-child,
+.stock-controls .btn-outline:nth-last-child(2) {
+  min-width: 44px;
+  padding: 12px;
+  font-size: 1.125rem;
+  font-weight: 700;
+  justify-content: center;
 }
 
 .btn {
-  padding: 8px 12px;
+  padding: 12px 16px;
   border: none;
   border-radius: var(--radius);
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 0.875rem;
+  font-weight: 600;
   cursor: pointer;
   transition: var(--transition);
   text-decoration: none;
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  justify-content: center;
+  gap: 6px;
+  white-space: nowrap;
 }
 
 .btn-primary {
@@ -401,14 +418,32 @@
 }
 
 .btn-sm {
-  padding: 6px 10px;
-  font-size: 0.7rem;
+  padding: 10px 14px;
+  font-size: 0.8125rem;
+  font-weight: 600;
 }
 
 .btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
 }
+
+.btn svg,
+.btn span[role="img"] {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+.btn-primary svg,
+.btn-primary span[role="img"] {
+  filter: brightness(0) invert(1);
+}
+
+.btn-secondary:hover svg,
+.btn-secondary:hover span[role="img"] {
+  filter: brightness(0) invert(1);
+}
+
 
 /* Modal */
 .modal-overlay {
@@ -605,7 +640,7 @@
   }
 
   .stock-controls {
-    justify-content: center;
+    grid-template-columns: 1fr auto auto;
     width: 100%;
   }
 
@@ -626,5 +661,31 @@
 
   .modal-actions {
     flex-direction: column;
+  }
+
+  .btn {
+    padding: 14px 16px;
+    font-size: 0.875rem;
+  }
+
+  .product-actions {
+    gap: 12px;
+  }
+}
+
+/* Media queries para pantallas grandes */
+@media (min-width: 1200px) {
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1600px) {
+  .product-management-container {
+    max-width: 1400px;
+  }
+
+  .products-grid {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
